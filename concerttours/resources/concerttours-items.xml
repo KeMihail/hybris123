@@ -3,13 +3,91 @@
 <items xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:noNamespaceSchemaLocation="items.xsd">
 
+	<enumtypes>
+		<enumtype code="MusicType" autocreate="true" generate="true"
+			dynamic="true">
+		</enumtype>
+		<enumtype code="ConcertType" autocreate="true"
+			generate="true" dynamic="false">
+			<value code="openair" />
+			<value code="indoor" />
+		</enumtype>
+	</enumtypes>
+
+	<relations>
+
+		<relation code="Band2MusicType" autocreate="true"
+			generate="true" localized="false">
+			<deployment table="Band2MusicTypes" typecode="30282" />
+
+			<sourceElement qualifier="band" type="Band"
+				cardinality="many">
+			</sourceElement>
+
+			<targetElement qualifier="musicType" type="MusicType"
+				cardinality="many">
+			</targetElement>
+
+		</relation>
+
+
+		<relation code="Product2Band" autocreate="true"
+			generate="true" localized="false">
+			<sourceElement qualifier="band" type="Band"
+				cardinality="one">
+			</sourceElement>
+			<targetElement qualifier="tour" type="Product"
+	cardinality="many" collectiontype="list">
+			</targetElement>
+		</relation>
+	</relations>
+
 	<itemtypes>
+
 		<itemtype code="Product" autocreate="false" generate="true">
 			<attributes>
 				<attribute qualifier="hashtag" type="java.lang.String">
 					<persistence type="property" />
 				</attribute>
 			</attributes>
+		</itemtype>
+
+		<itemtype code="Band" autocreate="true" generate="true">
+			<deployment table="Bands" typecode="30281" />
+
+			<attributes>
+				<attribute qualifier="code" type="java.lang.String">
+					<modifiers unique="true" optional="false" />
+					<persistence type="property" />
+				</attribute>
+				<attribute qualifier="name" type="java.lang.String">
+					<persistence type="property" />
+				</attribute>
+				<attribute qualifier="history" type="java.lang.String">
+					<persistence type="property" />
+				</attribute>
+				<attribute qualifier="albunSakes" type="java.lang.Long">
+					<persistence type="property" />
+				</attribute>
+			</attributes>
+
+		</itemtype>
+
+		<itemtype code="Concert" autocreate="true" generate="true"
+			extends="VariantProduct">
+
+			<attributes>
+				<attribute qualifier="venue" type="java.lang.String">
+					<persistence type="property" />
+				</attribute>
+				<attribute qualifier="date" type="java.util.Date">
+					<persistence type="property" />
+				</attribute>
+				<attribute qualifier="concertType" type="ConcertType">
+					<persistence type="property" />
+				</attribute>
+			</attributes>
+
 		</itemtype>
 
 	</itemtypes>
