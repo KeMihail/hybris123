@@ -4,12 +4,6 @@
 	<extensions>
 		<path dir='${HYBRIS_BIN_DIR}' autoload='false' />
 
-		<extension name="customextensions" />
-
-		<extension name="platformbackoffice" />
-
-		<extension name="yempty" />
-		<extension name="yhacext" />
-
+		<extension name="concerttours" />
 	</extensions>
 </hybrisconfig>
