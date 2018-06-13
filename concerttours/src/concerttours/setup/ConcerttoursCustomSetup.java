@@ -32,6 +32,7 @@ public class ConcerttoursCustomSetup
 	{
 		defaultImpexExport("concerttours-bands.impex");
 		defaultImpexExport("concerttours-yBandTour.impex");
+		defaultImpexExport("concerttour-bandmusictypes.impex");
 	}
 
 	protected Boolean impexImport(final String name)

@@ -1,0 +1,6 @@
+INSERT MusicType ; code[unique=true]
+                 ; pop              
+                 ; jazz             
+                 ; rock             
+                 ; rap              
+                 ; classical        
