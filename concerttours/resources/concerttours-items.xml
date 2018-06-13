@@ -53,7 +53,7 @@
 		</itemtype>
 
 		<itemtype code="Band" autocreate="true" generate="true">
-			<deployment table="Bands" typecode="30281" />
+			<deployment table="Bands" typecode="30283" />
 
 			<attributes>
 				<attribute qualifier="code" type="java.lang.String">
@@ -66,7 +66,7 @@
 				<attribute qualifier="history" type="java.lang.String">
 					<persistence type="property" />
 				</attribute>
-				<attribute qualifier="albunSakes" type="java.lang.Long">
+				<attribute qualifier="albumSales" type="java.lang.Long">
 					<persistence type="property" />
 				</attribute>
 			</attributes>
