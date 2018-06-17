@@ -28,4 +28,9 @@
 		<property name="importService" ref="importService" />
 	</bean>
 
+	<bean id="bandDaoImpl" class="concerttours.daos.impl.BandDaoImpl">
+		<property name="flexibleSearchService"
+			ref="flexibleSearchService" />
+	</bean>
+
 </beans>
