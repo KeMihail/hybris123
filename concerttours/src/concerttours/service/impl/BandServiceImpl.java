@@ -7,6 +7,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.beans.factory.annotation.Required;
+
 import concerttours.daos.impl.BandDaoImpl;
 import concerttours.model.BandModel;
 import concerttours.service.IServiceBand;
@@ -17,6 +19,12 @@ public class BandServiceImpl implements IServiceBand
 
 	@Resource
 	private BandDaoImpl bandDaoImpl;
+
+	@Required
+	public void setBandDaoImpl(final BandDaoImpl bandDaoImpl)
+	{
+		this.bandDaoImpl = bandDaoImpl;
+	}
 
 	@Override
 	public List<BandModel> getAllBands()

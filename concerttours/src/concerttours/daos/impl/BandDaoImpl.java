@@ -7,6 +7,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.beans.factory.annotation.Required;
+
 import concerttours.daos.IBandDao;
 import concerttours.model.BandModel;
 
@@ -15,6 +17,12 @@ public class BandDaoImpl implements IBandDao
 {
 	@Resource
 	private FlexibleSearchService flexibleSearchService;
+
+	@Required
+	public void setFlexibleSearchService(final FlexibleSearchService flexibleSearchService)
+	{
+		this.flexibleSearchService = flexibleSearchService;
+	}
 
 	@Override
 	public List<BandModel> getBandForCode(final String code)
