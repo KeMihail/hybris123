@@ -33,4 +33,9 @@
 			ref="flexibleSearchService" />
 	</bean>
 
+	<bean id="bandServiceImpl"
+		class="concerttours.service.impl.BandServiceImpl">
+		<property name="bandDaoImpl" ref="bandDaoImpl" />
+	</bean>
+
 </beans>
