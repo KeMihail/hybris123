@@ -32,7 +32,7 @@ public class BandDaoIntegrationTest extends ServicelayerTransactionalTest
 	private BandModel bandModel;
 
 	@Before
-	public void setUp() throws Exception
+	public void setUp()
 	{
 		bandModel = modelService.create(BandModel.class);
 		bandModel.setCode(code);
@@ -40,6 +40,21 @@ public class BandDaoIntegrationTest extends ServicelayerTransactionalTest
 		bandModel.setHistory(history);
 		bandModel.setAlbumSales(albumSales);
 	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testUnknownCode()
+	{
+		bandDaoImpl.getBandForCode(null);
+	}
+
+
+	@Test
+	public void testNullCode()
+	{
+		final List<BandModel> bands = bandDaoImpl.getBandForCode(code);
+		Assert.assertTrue(bands.isEmpty());
+	}
+
 
 	@Test
 	public void testBandDaoTest()
