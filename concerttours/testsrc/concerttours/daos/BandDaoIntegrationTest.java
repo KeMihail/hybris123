@@ -26,9 +26,10 @@ public class BandDaoIntegrationTest extends ServicelayerTransactionalTest
 
 	@Resource
 	private ModelService modelService;
-	private BandModel bandModel;
 	@Resource
 	private IBandDao bandDaoImpl;
+
+	private BandModel bandModel;
 
 	@Before
 	public void setUp() throws Exception
@@ -38,21 +39,32 @@ public class BandDaoIntegrationTest extends ServicelayerTransactionalTest
 		bandModel.setName(name);
 		bandModel.setHistory(history);
 		bandModel.setAlbumSales(albumSales);
-		modelService.save(bandModel);
 	}
 
 	@Test
 	public void testBandDaoTest()
 	{
-		final List<BandModel> bands = bandDaoImpl.getAllBands();
+		List<BandModel> bands = bandDaoImpl.getAllBands();
+		final Integer size = bands.size();
+
+		modelService.save(bandModel);
+		bands = bandDaoImpl.getAllBands();
 		Assert.assertTrue(!bands.isEmpty());
-		Assert.assertEquals(1, bands.size());
-		Assert.assertEquals(code, bands.get(0).getCode());
-		Assert.assertEquals(name, bands.get(0).getName());
-		Assert.assertEquals(history, bands.get(0).getHistory());
-		Assert.assertEquals(albumSales, bands.get(0).getAlbumSales());
+		Assert.assertEquals(size + 1, bands.size());
+		Assert.assertTrue(bands.contains(bandModel));
 
 	}
 
-
+	@Test
+	public void testFindBandByCode()
+	{
+		modelService.save(bandModel);
+		final List<BandModel> band = bandDaoImpl.getBandForCode(code);
+		Assert.assertNotNull(band);
+		Assert.assertEquals(1, band.size());
+		Assert.assertEquals(code, band.get(0).getCode());
+		Assert.assertEquals(name, band.get(0).getName());
+		Assert.assertEquals(history, band.get(0).getHistory());
+		Assert.assertEquals(albumSales, band.get(0).getAlbumSales());
+	}
 }
