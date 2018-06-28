@@ -10,11 +10,14 @@ import de.hybris.platform.servicelayer.impex.impl.StreamBasedImpExResource;
 import java.io.File;
 import java.io.InputStream;
 
+import javax.annotation.Resource;
+
 
 @SystemSetup(extension = "concerttours")
 public class ConcerttoursCustomSetup
 {
 
+	@Resource
 	private ImportService importService;
 
 	public ImportService getImportService()
@@ -30,9 +33,9 @@ public class ConcerttoursCustomSetup
 	@SystemSetup(type = SystemSetup.Type.ESSENTIAL)
 	public void addMyProjectData()
 	{
-		defaultImpexExport("concerttours-bands.impex");
-		defaultImpexExport("concerttours-yBandTour.impex");
-		defaultImpexExport("concerttour-bandmusictypes.impex");
+		impexImport("/impex/concerttours-bands.impex");
+		impexImport("/impex/concerttours-yBandTour.impex");
+		impexImport("/impex/concerttour-bandmusictypes.impex");
 	}
 
 	protected Boolean impexImport(final String name)

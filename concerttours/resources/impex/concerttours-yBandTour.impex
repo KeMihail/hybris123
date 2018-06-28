@@ -1,8 +1,14 @@
 $approved=approvalstatus(code[default='approved'])
 $catalogVersion=catalogVersion(catalog(id[default=Default]),version[default=Staged])[unique=true]
 
-INSERT_UPDATE Product ; code[unique=true] ; name         ; variantType(code) ; $catalogVersion ; $approved
-                      ; tour1             ; default tour ; Concert           
+INSERT_UPDATE Catalog ; id[unique=true]
+                      ; Default        
+
+INSERT_UPDATE CatalogVersion ; version[unique=true] ; catalog(id)
+                             ; Staged               ; Default    
+
+INSERT_UPDATE Product ; code[unique=true] ; name         ; variantType(code) ; band(code) ; $catalogVersion ; $approved
+                      ; tour1             ; default tour ; Concert           ; B001       
 
 INSERT_UPDATE Concert ; code[unique=true] ; venue  ; date[dateformat=dd.MM.yyyy] ; concertType(code) ; baseProduct(code) ; $catalogVersion ; $approved
                       ; concert1          ; Madrid ; 15.06.2014                  ; openair           ; tour1             
