@@ -11,10 +11,10 @@ import org.springframework.beans.factory.annotation.Required;
 
 import concerttours.daos.impl.BandDaoImpl;
 import concerttours.model.BandModel;
-import concerttours.service.IServiceBand;
+import concerttours.service.IBandService;
 
 
-public class BandServiceImpl implements IServiceBand
+public class BandServiceImpl implements IBandService
 {
 
 	@Resource

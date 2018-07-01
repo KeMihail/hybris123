@@ -38,4 +38,14 @@
 		<property name="bandDaoImpl" ref="bandDaoImpl" />
 	</bean>
 
+	<bean id="defaultTourFacade"
+		class="concerttours.facades.impl.DefaultTourFacade">
+		<property name="productService" ref="productService" />
+	</bean>
+
+	<bean id="DefaultBandFacade"
+		class="concerttours.facades.impl.DefaultBandFacade">
+		<property name="DefaultBandFacade" ref="DefaultBandFacade" />
+	</bean>
+
 </beans>

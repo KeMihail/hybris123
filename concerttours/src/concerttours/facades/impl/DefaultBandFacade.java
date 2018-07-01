@@ -7,18 +7,20 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.beans.factory.annotation.Required;
+
 import concerttours.data.BandData;
 import concerttours.data.TourSummaryData;
 import concerttours.enums.MusicType;
 import concerttours.facades.BandFacades;
 import concerttours.model.BandModel;
-import concerttours.service.impl.BandServiceImpl;
+import concerttours.service.IBandService;
 
 
 public class DefaultBandFacade implements BandFacades
 {
 	@Resource
-	private BandServiceImpl bandServiceImpl;
+	private IBandService bandServiceImpl;
 
 	@Override
 	public BandData getBand(final String bandId)
@@ -54,7 +56,7 @@ public class DefaultBandFacade implements BandFacades
 			{
 				final TourSummaryData tourSummary = new TourSummaryData();
 				tourSummary.setId(item.getCode());
-				tourSummary.setTourName(item.getHashtag());
+				tourSummary.setTourName(item.getName());
 				tourSummary.setNumberOfConcert(Long.valueOf(item.getVariants().size()));
 
 				tours.add(tourSummary);
@@ -89,5 +91,11 @@ public class DefaultBandFacade implements BandFacades
 			bands.add(band);
 		}
 		return bands;
+	}
+
+	@Required
+	public void setBandServiceImpl(final IBandService bandServiceImpl)
+	{
+		this.bandServiceImpl = bandServiceImpl;
 	}
 }
