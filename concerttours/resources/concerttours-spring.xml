@@ -45,7 +45,7 @@
 
 	<bean id="DefaultBandFacade"
 		class="concerttours.facades.impl.DefaultBandFacade">
-		<property name="DefaultBandFacade" ref="DefaultBandFacade" />
+		<property name="bandServiceImpl" ref="bandServiceImpl" />
 	</bean>
 
 </beans>

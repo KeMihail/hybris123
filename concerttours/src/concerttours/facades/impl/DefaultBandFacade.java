@@ -12,12 +12,12 @@ import org.springframework.beans.factory.annotation.Required;
 import concerttours.data.BandData;
 import concerttours.data.TourSummaryData;
 import concerttours.enums.MusicType;
-import concerttours.facades.BandFacades;
+import concerttours.facades.IBandFacades;
 import concerttours.model.BandModel;
 import concerttours.service.IBandService;
 
 
-public class DefaultBandFacade implements BandFacades
+public class DefaultBandFacade implements IBandFacades
 {
 	@Resource
 	private IBandService bandServiceImpl;

@@ -14,11 +14,11 @@ import org.springframework.beans.factory.annotation.Required;
 
 import concerttours.data.ConcertSummaryData;
 import concerttours.data.TourData;
-import concerttours.facades.TourFacade;
+import concerttours.facades.ITourFacade;
 import concerttours.model.ConcertModel;
 
 
-public class DefaultTourFacade implements TourFacade
+public class DefaultTourFacade implements ITourFacade
 {
 	@Resource
 	private ProductService productService;

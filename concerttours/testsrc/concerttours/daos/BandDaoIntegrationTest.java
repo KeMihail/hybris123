@@ -47,7 +47,6 @@ public class BandDaoIntegrationTest extends ServicelayerTransactionalTest
 		bandDaoImpl.getBandForCode(null);
 	}
 
-
 	@Test
 	public void testNullCode()
 	{

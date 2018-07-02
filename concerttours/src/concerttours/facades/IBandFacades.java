@@ -5,7 +5,7 @@ import java.util.List;
 import concerttours.data.BandData;
 
 
-public interface BandFacades
+public interface IBandFacades
 {
 	BandData getBand(final String bandId);
 
