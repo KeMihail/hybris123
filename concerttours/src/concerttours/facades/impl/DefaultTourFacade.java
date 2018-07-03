@@ -54,7 +54,7 @@ public class DefaultTourFacade implements ITourFacade
 				{
 					final ConcertModel concert = (ConcertModel) item;
 					final ConcertSummaryData concertSummary = new ConcertSummaryData();
-					concertSummary.setData(new Date());
+					concertSummary.setDate(new Date());
 					concertSummary.setId(concert.getCode());
 					concertSummary.setVenue(concert.getVenue());
 					concertSummary.setType(concert.getConcertType().getCode());

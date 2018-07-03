@@ -26,7 +26,7 @@
 		<description>Data 
 		object for a concert summary</description>
 		<property name="id" type="String" />
-		<property name="data" type="java.util.Date" />
+		<property name="date" type="java.util.Date" />
 		<property name="venue" type="String" />
 		<property name="type" type="String" />
 	</bean>

@@ -4,10 +4,12 @@
 <html>
 <title>Tour Details</title>
 <body>
+
 	<h1>Tour Details</h1>
 	Tour Details for ${tour.tourName}
 	<p>${tour.description}</p>
 	<p>Schedule:</p>
+
 	<table>
 		<tr>
 			<th>Venue</th>
@@ -16,6 +18,7 @@
 		</tr>
 		<c:forEach var="concert" items="${tour.concerts}">
 			<tr>
+
 				<td>${concert.venue}</td>
 				<td>${concert.type}</td>
 				<td><fmt:formatDate pattern="dd MMM yyyy"

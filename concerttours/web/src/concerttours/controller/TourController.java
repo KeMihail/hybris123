@@ -18,7 +18,6 @@ import concerttours.facades.ITourFacade;
 @Controller
 public class TourController
 {
-
 	private ITourFacade tourFacade;
 	private CatalogVersionService catalogVersionService;
 
@@ -26,11 +25,11 @@ public class TourController
 	private static final String VERSION_NAME = "Staged";
 
 	@RequestMapping(value = "/tours/{tourId}")
-	public String tourDetails(@PathVariable final String id, final Model model) throws UnsupportedEncodingException
+	public String tourDetails(@PathVariable final String tourId, final Model model) throws UnsupportedEncodingException
 	{
 		catalogVersionService.setSessionCatalogVersion(CATALOG_ID, VERSION_NAME);
-		final String tourId = URLDecoder.decode(id, "UTF-8");
-		final TourData tour = tourFacade.getTour(tourId);
+		final String id = URLDecoder.decode(tourId, "UTF-8");
+		final TourData tour = tourFacade.getTour(id);
 		model.addAttribute("tour", tour);
 
 		return "TourDetails";
@@ -48,3 +47,5 @@ public class TourController
 		this.catalogVersionService = catalogVersionService;
 	}
 }
+
+

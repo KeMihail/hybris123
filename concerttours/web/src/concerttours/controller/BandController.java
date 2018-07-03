@@ -13,23 +13,23 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import concerttours.data.BandData;
-import concerttours.data.TourSummaryData;
-import concerttours.facades.impl.DefaultBandFacade;
+import concerttours.facades.IBandFacades;
 
 
 @Controller
 public class BandController
 {
 	private static final String CATALOG_ID = "Default";
-	private static final String CATALOG_VERSION_NAME = "Online";
+	private static final String CATALOG_VERSION_NAME = "Staged";
 
 	private CatalogVersionService catalogVersionService;
-	private DefaultBandFacade bandFacade;
+
+	private IBandFacades defaultBandFacade;
 
 	@RequestMapping(value = "/bands")
 	public String showBands(final Model model)
 	{
-		final List<BandData> bands = bandFacade.getBands();
+		final List<BandData> bands = defaultBandFacade.getBands();
 		model.addAttribute("bands", bands);
 		return "BandList";
 	}
@@ -39,16 +39,9 @@ public class BandController
 	{
 		catalogVersionService.setSessionCatalogVersion(CATALOG_ID, CATALOG_VERSION_NAME);
 		final String decodedBandId = URLDecoder.decode(bandId, "UTF-8");
-		final BandData band = bandFacade.getBand(decodedBandId);
+		final BandData band = defaultBandFacade.getBand(decodedBandId);
+
 		model.addAttribute("band", band);
-
-
-		for (final TourSummaryData item : band.getTours())
-		{
-			System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" + item.getId());
-			System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" + item.getNumberOfConcerts());
-			System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" + item.getTourName());
-		}
 
 		return "BandDetails";
 	}
@@ -60,10 +53,11 @@ public class BandController
 	}
 
 	@Autowired
-	public void setBandFacade(final DefaultBandFacade bandFacade)
+	public void setDefaultBandFacade(final IBandFacades defaultBandFacade)
 	{
-		this.bandFacade = bandFacade;
+		this.defaultBandFacade = defaultBandFacade;
 	}
+
 
 
 }
