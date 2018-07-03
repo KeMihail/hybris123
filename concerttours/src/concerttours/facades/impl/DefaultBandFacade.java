@@ -4,6 +4,7 @@ import de.hybris.platform.core.model.product.ProductModel;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import javax.annotation.Resource;
 
@@ -31,43 +32,47 @@ public class DefaultBandFacade implements IBandFacades
 		}
 
 
-		final BandModel bandService = bandServiceImpl.getBandForCode(bandId);
-		if (bandService == null)
+		final BandModel bandModel = bandServiceImpl.getBandForCode(bandId);
+		if (bandModel == null)
 		{
 			return null;
 		}
 
 		final BandData bandFacade = new BandData();
 
-		final List<String> ganres = new ArrayList<>();
-		final List<MusicType> bandGanres = bandService.getMusicType();
+		final List<String> genres = new ArrayList<>();
 
-		for (final MusicType type : bandGanres)
+		if (bandModel.getMusicType() != null)
 		{
-			ganres.add(type.getCode());
+
+			for (final MusicType type : bandModel.getMusicType())
+			{
+				genres.add(type.getCode());
+			}
 		}
 
 		final List<TourSummaryData> tours = new ArrayList<>();
 
-		if (bandService.getTour() != null)
+
+		if (bandModel.getTour() != null)
 		{
 
-			for (final ProductModel item : bandService.getTour())
+			for (final ProductModel item : bandModel.getTour())
 			{
 				final TourSummaryData tourSummary = new TourSummaryData();
 				tourSummary.setId(item.getCode());
-				tourSummary.setTourName(item.getName());
-				tourSummary.setNumberOfConcert(Long.valueOf(item.getVariants().size()));
+				tourSummary.setTourName(item.getName(Locale.ENGLISH));
+				tourSummary.setNumberOfConcerts(Integer.toString(item.getVariants().size()));
 
 				tours.add(tourSummary);
 			}
 		}
 
-		bandFacade.setId(bandService.getCode());
-		bandFacade.setName(bandService.getName());
-		bandFacade.setDescription(bandService.getHistory());
-		bandFacade.setAlbumSold(bandService.getAlbumSales());
-		bandFacade.setGenres(ganres);
+		bandFacade.setId(bandModel.getCode());
+		bandFacade.setName(bandModel.getName());
+		bandFacade.setDescription(bandModel.getHistory());
+		bandFacade.setAlbumSold(bandModel.getAlbumSales());
+		bandFacade.setGenres(genres);
 		bandFacade.setTours(tours);
 
 		return bandFacade;

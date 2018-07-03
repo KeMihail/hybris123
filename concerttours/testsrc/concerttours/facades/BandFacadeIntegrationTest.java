@@ -1,7 +1,6 @@
 package concerttours.facades;
 
 import de.hybris.bootstrap.annotations.IntegrationTest;
-import de.hybris.platform.core.model.product.ProductModel;
 import de.hybris.platform.impex.jalo.ImpExException;
 import de.hybris.platform.servicelayer.ServicelayerTransactionalTest;
 import de.hybris.platform.servicelayer.exceptions.UnknownIdentifierException;
@@ -28,7 +27,7 @@ public class BandFacadeIntegrationTest extends ServicelayerTransactionalTest
 	@Resource
 	private IBandService bandServiceImpl;
 	@Resource
-	private IBandFacades DefaultBandFacade;
+	private IBandFacades defaultBandFacade;
 
 	@Before
 	public void setUp() throws ImpExException
@@ -43,19 +42,19 @@ public class BandFacadeIntegrationTest extends ServicelayerTransactionalTest
 	@Test(expected = UnknownIdentifierException.class)
 	public void testUnknownParametr()
 	{
-		final BandData facade = DefaultBandFacade.getBand("unknown");
+		final BandData facade = defaultBandFacade.getBand("unknown");
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testNullParametr()
 	{
-		final BandData facade = DefaultBandFacade.getBand(null);
+		final BandData facade = defaultBandFacade.getBand(null);
 	}
 
 	@Test
 	public void testGetBandForCode()
 	{
-		final BandData facade = DefaultBandFacade.getBand("B001");
+		final BandData facade = defaultBandFacade.getBand("B001");
 		Assert.assertNotNull(facade);
 
 		Assert.assertEquals("B001", facade.getId());
@@ -73,18 +72,21 @@ public class BandFacadeIntegrationTest extends ServicelayerTransactionalTest
 		final List<TourSummaryData> tour = new ArrayList<>();
 
 		final BandModel band = bandServiceImpl.getBandForCode("B001");
-		final List<ProductModel> product = band.getTour();
 
-		Assert.assertEquals(1, product.size());
-		Assert.assertEquals("tour1", product.get(0).getCode());
-		Assert.assertEquals("first tour", product.get(0).getName());
-		Assert.assertEquals(5, product.get(0).getVariants().size());
+		System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" + facade.getTours().get(0).getId());
+		System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" + facade.getTours().size());
+
+		Assert.assertEquals(band.getTour().size(), facade.getTours().size());
+		Assert.assertEquals(band.getTour().get(0).getCode(), facade.getTours().get(0).getId());
+		Assert.assertEquals(band.getTour().get(0).getName(), facade.getTours().get(0).getTourName());
+		Assert.assertEquals(Integer.toString(band.getTour().get(0).getVariants().size()),
+				facade.getTours().get(0).getNumberOfConcerts());
 	}
 
 	@Test
 	public void testGetBands()
 	{
-		final List<BandData> bands = DefaultBandFacade.getBands();
+		final List<BandData> bands = defaultBandFacade.getBands();
 		Assert.assertNotNull(bands);
 		Assert.assertEquals(7, bands.size());
 	}
