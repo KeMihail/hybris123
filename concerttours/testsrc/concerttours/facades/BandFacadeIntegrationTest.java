@@ -75,10 +75,11 @@ public class BandFacadeIntegrationTest extends ServicelayerTransactionalTest
 		final BandModel band = bandServiceImpl.getBandForCode("B001");
 		final List<ProductModel> product = band.getTour();
 
-		Assert.assertEquals(1, product.size());
-		Assert.assertEquals("tour1", product.get(0).getCode());
-		Assert.assertEquals("first tour", product.get(0).getName());
-		Assert.assertEquals(5, product.get(0).getVariants().size());
+		Assert.assertEquals(band.getTour().size(), facade.getTours().size());
+		Assert.assertEquals(band.getTour().get(0).getCode(), facade.getTours().get(0).getId());
+		Assert.assertEquals(band.getTour().get(0).getName(), facade.getTours().get(0).getTourName());
+		Assert.assertEquals(Integer.toString(band.getTour().get(0).getVariants().size()),
+				facade.getTours().get(0).getNumberOfConcerts());
 	}
 
 	@Test

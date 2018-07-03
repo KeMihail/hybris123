@@ -7,7 +7,7 @@
 		<description>Data object for a tour summary which has no equivalent on the type system</description>
 		<property name="id" type="String" />
 		<property name="tourName" type="String" />
-		<property name="numberOfConcert" type="Long" />
+		<property name="numberOfConcerts" type="String" />
 	</bean>
 
 	<bean class="concerttours.data.BandData">

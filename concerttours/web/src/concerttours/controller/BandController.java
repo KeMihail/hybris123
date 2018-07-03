@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import concerttours.data.BandData;
-import concerttours.facades.IBandFacades;
+import concerttours.data.TourSummaryData;
+import concerttours.facades.impl.DefaultBandFacade;
 
 
 @Controller
@@ -21,8 +22,9 @@ public class BandController
 {
 	private static final String CATALOG_ID = "Default";
 	private static final String CATALOG_VERSION_NAME = "Online";
+
 	private CatalogVersionService catalogVersionService;
-	private IBandFacades bandFacade;
+	private DefaultBandFacade bandFacade;
 
 	@RequestMapping(value = "/bands")
 	public String showBands(final Model model)
@@ -39,6 +41,15 @@ public class BandController
 		final String decodedBandId = URLDecoder.decode(bandId, "UTF-8");
 		final BandData band = bandFacade.getBand(decodedBandId);
 		model.addAttribute("band", band);
+
+
+		for (final TourSummaryData item : band.getTours())
+		{
+			System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" + item.getId());
+			System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" + item.getNumberOfConcerts());
+			System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" + item.getTourName());
+		}
+
 		return "BandDetails";
 	}
 
@@ -49,9 +60,10 @@ public class BandController
 	}
 
 	@Autowired
-	public void setBandFacade(final IBandFacades bandFacade)
+	public void setBandFacade(final DefaultBandFacade bandFacade)
 	{
 		this.bandFacade = bandFacade;
 	}
+
 
 }

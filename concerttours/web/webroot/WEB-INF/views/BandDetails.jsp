@@ -24,6 +24,7 @@
 				concerts: ${tour.numberOfConcerts})</li>
 		</c:forEach>
 	</ul>
+
 	<a href="../bands">Back to Band List</a>
 </body>
 </html>
