@@ -5,7 +5,7 @@ import java.util.List;
 import concerttours.model.BandModel;
 
 
-public interface IServiceBand
+public interface IBandService
 {
 
 	List<BandModel> getAllBands();

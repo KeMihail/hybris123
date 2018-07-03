@@ -1,8 +1,8 @@
-INSERT_UPDATE Band;code[unique=true];musicType(code)
-;B001;pop,jazz,classical
-;B002;jazz,rock
-;B003;rap
-;B004;pop
-;B005;classical,pop
-;B006;jazz,rap
-;B007;classical
+INSERT_UPDATE Band ; code[unique=true] ; musicType(code)   
+                   ; B001              ; pop,jazz,classical
+                   ; B002              ; jazz,rock         
+                   ; B003              ; rap               
+                   ; B004              ; pop               
+                   ; B005              ; classical,pop     
+                   ; B006              ; jazz,rap          
+                   ; B007              ; classical         
