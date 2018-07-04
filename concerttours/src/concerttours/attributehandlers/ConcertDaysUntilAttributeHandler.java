@@ -27,7 +27,7 @@ public class ConcertDaysUntilAttributeHandler implements DynamicAttributeHandler
 		{
 			return Long.valueOf(0L);
 		}
-		final Duration duration = Duration.between(concertDate, currentDate);
+		final Duration duration = Duration.between(currentDate, concertDate);
 
 		return Long.valueOf(duration.toDays());
 	}
