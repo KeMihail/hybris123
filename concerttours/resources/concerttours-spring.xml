@@ -48,4 +48,8 @@
 		<property name="bandServiceImpl" ref="bandServiceImpl" />
 	</bean>
 
+	<bean id="concertDaysUntilAttributeHandler"
+		class="concerttours.attributehandlers.ConcertDaysUntilAttributeHandler">
+	</bean>
+
 </beans>
