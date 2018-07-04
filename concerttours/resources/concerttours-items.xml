@@ -25,7 +25,7 @@
 			</sourceElement>
 
 			<targetElement qualifier="musicType" type="MusicType"
-	cardinality="many" collectiontype="list">
+				cardinality="many" collectiontype="list">
 			</targetElement>
 
 		</relation>
@@ -37,7 +37,7 @@
 				cardinality="one">
 			</sourceElement>
 			<targetElement qualifier="tour" type="Product"
-	cardinality="many" collectiontype="list">
+				cardinality="many" collectiontype="list">
 			</targetElement>
 		</relation>
 	</relations>
