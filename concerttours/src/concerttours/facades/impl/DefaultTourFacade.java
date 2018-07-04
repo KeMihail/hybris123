@@ -58,6 +58,7 @@ public class DefaultTourFacade implements ITourFacade
 					concertSummary.setId(concert.getCode());
 					concertSummary.setVenue(concert.getVenue());
 					concertSummary.setType(concert.getConcertType().getCode());
+					concertSummary.setCountDown(concert.getDaysUntil());
 
 					concerts.add(concertSummary);
 				}
