@@ -11,8 +11,8 @@ INSERT_UPDATE Product ; code[unique=true] ; name       ; variantType(code) ; ban
                       ; tour1             ; first tour ; Concert           ; B001       ; description 
 
 INSERT_UPDATE Concert ; code[unique=true] ; venue  ; date[dateformat=dd.MM.yyyy] ; concertType(code) ; baseProduct(code) ; $catalogVersion ; $approved
-                      ; concert1          ; Madrid ; 15.06.2014                  ; openair           ; tour1             
-                      ; concert2          ; Minsk  ; 17.03.2014                  ; openair           ; tour1             
-                      ; concert3          ; Grodno ; 22.01.2015                  ; indoor            ; tour1             
-                      ; concert4          ; Kiev   ; 03.05.2015                  ; openair           ; tour1             
-                      ; concert5          ; Madrid ; 11.01.2015                  ; indoor            ; tour1             
+                      ; concert1          ; Madrid ; 15.08.2018                  ; openair           ; tour1             
+                      ; concert2          ; Minsk  ; 17.03.2018                  ; openair           ; tour1             
+                      ; concert3          ; Grodno ; 22.01.2018                  ; indoor            ; tour1             
+                      ; concert4          ; Kiev   ; 20.08.2018                  ; openair           ; tour1             
+                      ; concert5          ; Madrid ; 21.08.2018                  ; indoor            ; tour1             

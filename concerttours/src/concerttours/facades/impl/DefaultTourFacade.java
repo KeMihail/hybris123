@@ -5,7 +5,6 @@ import de.hybris.platform.product.ProductService;
 import de.hybris.platform.variants.model.VariantProductModel;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -54,10 +53,11 @@ public class DefaultTourFacade implements ITourFacade
 				{
 					final ConcertModel concert = (ConcertModel) item;
 					final ConcertSummaryData concertSummary = new ConcertSummaryData();
-					concertSummary.setDate(new Date());
+					concertSummary.setDate(concert.getDate());
 					concertSummary.setId(concert.getCode());
 					concertSummary.setVenue(concert.getVenue());
 					concertSummary.setType(concert.getConcertType().getCode());
+					concertSummary.setCountDown(concert.getDaysUntil());
 
 					concerts.add(concertSummary);
 				}

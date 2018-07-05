@@ -86,6 +86,13 @@
 				<attribute qualifier="concertType" type="ConcertType">
 					<persistence type="property" />
 				</attribute>
+
+				<attribute qualifier="daysUntil" type="java.lang.Long">
+					<persistence type="dynamic"
+						attributeHandler="concertDaysUntilAttributeHandler" />
+					<modifiers read="true" write="false" />
+				</attribute>
+
 			</attributes>
 
 		</itemtype>
