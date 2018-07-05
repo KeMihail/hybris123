@@ -53,4 +53,10 @@
 	<bean id="concertDaysUntilAttributeHandler"
 		class="concerttours.attributehandlers.ConcertDaysUntilAttributeHandler" />
 
+	<bean id="newBandEventListener"
+		class="concerttours.events.NewBandEventListener"
+		parent="abstractEventListener">
+		<property name="modelService" ref="modelService" />
+	</bean>
+
 </beans>
