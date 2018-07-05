@@ -59,4 +59,9 @@
 		<property name="modelService" ref="modelService" />
 	</bean>
 
+	<bean id="updateBandEventListener"
+		class="concerttours.events.UpdateBandEventListener">
+		<property name="modelService" ref="modelService" />
+	</bean>
+
 </beans>
