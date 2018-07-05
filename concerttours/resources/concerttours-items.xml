@@ -90,7 +90,7 @@
 				<attribute qualifier="daysUntil" type="java.lang.Long">
 					<persistence type="dynamic"
 						attributeHandler="concertDaysUntilAttributeHandler" />
-					<modifiers write="false" />
+					<modifiers read="true" write="false" />
 				</attribute>
 
 			</attributes>
