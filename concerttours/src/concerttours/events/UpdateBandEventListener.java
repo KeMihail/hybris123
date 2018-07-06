@@ -1,5 +1,6 @@
 package concerttours.events;
 
+import de.hybris.platform.core.PK;
 import de.hybris.platform.servicelayer.model.ModelService;
 import de.hybris.platform.tx.AfterSaveEvent;
 import de.hybris.platform.tx.AfterSaveListener;
@@ -33,18 +34,19 @@ public class UpdateBandEventListener implements AfterSaveListener
 	{
 		for (final AfterSaveEvent event : events)
 		{
+			final PK pk = event.getPk();
 
-
-			if (event.getType() == 30299 && event.getType() == AfterSaveEvent.UPDATE)
+			if (pk.getTypeCode() == 30283 && event.getType() == AfterSaveEvent.UPDATE)
 			{
-				final BandModel band = modelService.get(event.getPk());
+
+				final BandModel band = modelService.get(pk);
 				news = modelService.create(NewsModel.class);
 				news.setDate(new Date());
 				news.setHeadline("update band");
 				news.setContent("update band: " + band.getName());
 				modelService.save(news);
+
 			}
 		}
 	}
-
 }
