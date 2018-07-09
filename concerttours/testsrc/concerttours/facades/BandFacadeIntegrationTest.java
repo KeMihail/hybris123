@@ -73,9 +73,6 @@ public class BandFacadeIntegrationTest extends ServicelayerTransactionalTest
 
 		final BandModel band = bandServiceImpl.getBandForCode("B001");
 
-		System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" + facade.getTours().get(0).getId());
-		System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" + facade.getTours().size());
-
 		Assert.assertEquals(band.getTour().size(), facade.getTours().size());
 		Assert.assertEquals(band.getTour().get(0).getCode(), facade.getTours().get(0).getId());
 		Assert.assertEquals(band.getTour().get(0).getName(), facade.getTours().get(0).getTourName());

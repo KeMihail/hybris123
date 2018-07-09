@@ -81,4 +81,14 @@
 		<property name="modelService" ref="modelService" />
 	</bean>
 
+	<bean id="newsDaoImpl" class="concerttours.daos.impl.NewsDaoImpl">
+		<property name="flexibleSearchService"
+			ref="flexibleSearchService" />
+	</bean>
+
+	<bean id="NewsServiceImpl"
+		class="concerttours.service.impl.NewsServiceImpl">
+		<property name="newsDaoImpl" ref="newsDaoImpl" />
+	</bean>
+
 </beans>

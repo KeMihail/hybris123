@@ -7,6 +7,8 @@ import java.util.Date;
 
 import javax.annotation.Resource;
 
+import org.springframework.beans.factory.annotation.Required;
+
 import concerttours.model.NewsModel;
 
 
@@ -29,6 +31,12 @@ public class BandAlbumSalesEventListener extends AbstractEventListener<BandAlbum
 			news.setContent("sales from band: " + event.getBandName() + " = " + event.getAlbumSales());
 			modelService.save(news);
 		}
+	}
+
+	@Required
+	public void setModelService(final ModelService modelService)
+	{
+		this.modelService = modelService;
 	}
 
 }

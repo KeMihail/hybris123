@@ -6,7 +6,8 @@ import de.hybris.platform.servicelayer.interceptor.InterceptorException;
 import de.hybris.platform.servicelayer.interceptor.PrepareInterceptor;
 import de.hybris.platform.servicelayer.interceptor.ValidateInterceptor;
 
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Required;
 
 import concerttours.events.BandAlbumSalesEvent;
 import concerttours.model.BandModel;
@@ -14,7 +15,7 @@ import concerttours.model.BandModel;
 
 public class BandAlbumSalesInterceptor implements ValidateInterceptor<BandModel>, PrepareInterceptor<BandModel>
 {
-	@Resource
+	@Autowired
 	private EventService eventService;
 
 	private static final Long BIG_SALES = 50000L;
@@ -36,6 +37,12 @@ public class BandAlbumSalesInterceptor implements ValidateInterceptor<BandModel>
 		{
 			eventService.publishEvent(new BandAlbumSalesEvent(model.getCode(), model.getName(), model.getAlbumSales()));
 		}
+	}
+
+	@Required
+	public void setEventService(final EventService eventService)
+	{
+		this.eventService = eventService;
 	}
 
 }

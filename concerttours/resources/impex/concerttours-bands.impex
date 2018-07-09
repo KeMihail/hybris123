@@ -1,6 +1,6 @@
 INSERT_UPDATE Band ; code[unique=true] ; name      ; albumSales ; history                                                                                                         
                    ; B001              ; yRock     ; 1000000    ; Occasional tribute rock band                                                                                    
-                   ; B006              ; yBand     ;            ; Dutch tribute rock band formed in 2013 playing classic rock tunes from the sixties, seventies and eighties      
+                   ; B006              ; yBand     ; 50         ; Dutch tribute rock band formed in 2013 playing classic rock tunes from the sixties, seventies and eighties      
                    ; B003              ; yJazz     ; 7          ; Experimental Jazz group from London playing many musical notes together in unexpected combinations and sequences
                    ; B004              ; Banned    ; 427        ; Rejuvenated Polish boy band from the 1990s - this genre of pop music at its most dubious best                   
                    ; B002              ; Sirken    ; 2000       ; A cappella singing group based in Munich                                                                        ; an uplifting blend of traditional and contemporaneous songs
