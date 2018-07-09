@@ -90,7 +90,6 @@ public class BandAlbumSalesEventListenerIntegrationTest extends ServicelayerTran
 	@Test
 	public void testEventSendingAsync() throws InterruptedException
 	{
-
 		final String code = "code1";
 		band.setCode(code);
 		band.setAlbumSales(ALBUM_SALES);
