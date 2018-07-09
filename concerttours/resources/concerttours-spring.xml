@@ -53,4 +53,42 @@
 	<bean id="concertDaysUntilAttributeHandler"
 		class="concerttours.attributehandlers.ConcertDaysUntilAttributeHandler" />
 
+	<bean id="newBandEventListener"
+		class="concerttours.events.NewBandEventListener"
+		parent="abstractEventListener">
+		<property name="modelService" ref="modelService" />
+	</bean>
+
+	<bean id="updateBandEventListener"
+		class="concerttours.events.UpdateBandEventListener">
+		<property name="modelService" ref="modelService" />
+	</bean>
+
+	<bean id="bandAlbumSalesInterceptor"
+		class="concerttours.interceptors.BandAlbumSalesInterceptor">
+		<property name="eventService" ref="eventService" />
+	</bean>
+
+	<bean id="BandInterceptorMapping"
+		class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="bandAlbumSalesInterceptor" />
+		<property name="typeCode" value="Band" />
+	</bean>
+
+	<bean id="bandAlbumSalesEventListener"
+		class="concerttours.events.BandAlbumSalesEventListener"
+		parent="abstractEventListener">
+		<property name="modelService" ref="modelService" />
+	</bean>
+
+	<bean id="newsDaoImpl" class="concerttours.daos.impl.NewsDaoImpl">
+		<property name="flexibleSearchService"
+			ref="flexibleSearchService" />
+	</bean>
+
+	<bean id="NewsServiceImpl"
+		class="concerttours.service.impl.NewsServiceImpl">
+		<property name="newsDaoImpl" ref="newsDaoImpl" />
+	</bean>
+
 </beans>
