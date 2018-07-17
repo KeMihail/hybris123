@@ -8,5 +8,5 @@ import concerttours.model.NewsModel;
 
 public interface INewsService
 {
-	List<NewsModel> findNewsForData(final Date date);
+	List<NewsModel> getNewsOfTheDay(final Date date);
 }

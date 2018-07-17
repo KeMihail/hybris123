@@ -17,10 +17,17 @@ public class NewsServiceImpl implements INewsService
 	@Resource
 	private INewsDao newsDaoImpl;
 
-	@Override
-	public List<NewsModel> findNewsForData(final Date date)
+
+	@Required
+	public void setNewsDaoImpl(final INewsDao newsDaoImpl)
 	{
-		final List<NewsModel> news = newsDaoImpl.findNewsForData(date);
+		this.newsDaoImpl = newsDaoImpl;
+	}
+
+	@Override
+	public List<NewsModel> getNewsOfTheDay(final Date date)
+	{
+		final List<NewsModel> news = newsDaoImpl.getNewsOfTheDay(date);
 
 		if (date == null)
 		{
@@ -34,11 +41,4 @@ public class NewsServiceImpl implements INewsService
 
 		return news;
 	}
-
-	@Required
-	public void setNewsDaoImpl(final INewsDao newsDaoImpl)
-	{
-		this.newsDaoImpl = newsDaoImpl;
-	}
-
 }
