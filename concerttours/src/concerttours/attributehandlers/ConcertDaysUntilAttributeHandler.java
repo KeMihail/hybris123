@@ -18,7 +18,6 @@ public class ConcertDaysUntilAttributeHandler extends AbstractDynamicAttributeHa
 	@Override
 	public Long get(final ConcertModel model)
 	{
-
 		final ZonedDateTime concertDate = model.getDate().toInstant().atZone(ZoneId.systemDefault());
 		final ZonedDateTime currentDate = ZonedDateTime.now(ZoneId.systemDefault());
 
